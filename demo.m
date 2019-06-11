@@ -34,6 +34,7 @@ subplot(2,1,1); plotDrift(RT,decision,evidence,pm,20);
 title(['v = ' num2str(pm.driftrate(1))]);
 
 % Higher drift model
+pm = struct; % empty structure
 pm.driftrate = 2; % more evidence for option A
 [RT,decision,evidence,pm] = driftdiff(pm);
 subplot(2,1,2); plotDrift(RT,decision,evidence,pm,20); 
@@ -66,8 +67,8 @@ plotDrift(RT,decision,evidence,pm,20);
 title(['a = ' num2str(pm.upperbound(1))]);
 
 % Decreased bounds model
+pm = struct; % empty structure
 pm.upperbound = 300; % decrease bound a
-pm.bias = pm.upperbound/2; % keep starting point in the middle!
 
 [RT,decision,evidence,pm] = driftdiff(pm);
 subplot(2,1,2); 
@@ -100,6 +101,7 @@ plotDrift(RT,decision,evidence,pm,20);
 title(['t_0 = ' num2str(pm.nondectime(1))]);
 
 % Delayed model
+pm = struct; % empty structure
 pm.nondectime = 200; % wait 200 ms before integration
 pm.ndcrange = 25; % waiting time varies between 175 and 225 ms
 
